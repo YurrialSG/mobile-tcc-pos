@@ -1,9 +1,16 @@
 {
   "expo": {
     "name": "mobile_tcc_pos",
+    "icon": "./assets/logo.png",
     "slug": "mobile_tcc_pos",
     "privacy": "public",
     "sdkVersion": "35.0.0",
+    "ios": {
+      "bundleIdentifier": "com.yurrialsg.mobile_tcc_pos"
+    },
+    "android": {
+      "package": "com.yurrialsg.mobile_tcc_pos"
+    },
     "platforms": [
       "ios",
       "android",
