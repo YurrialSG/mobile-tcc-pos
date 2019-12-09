@@ -26,7 +26,7 @@ export default class LoginForm extends Component {
                     placeholder="Senha"
                     ref={(input) => this.passwordInput = input}
                 />
-                <Link style={styles.buttonLogin}>
+                <Link to="/home" style={styles.buttonLogin}>
                     <Text style={styles.buttonText}>Login</Text>
                 </Link>
                 <Link to="/register" style={styles.buttonRegister}>
