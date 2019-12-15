@@ -6,7 +6,6 @@ import { client } from './src/graphql/client';
 import Login from './src/screens/Login';
 import Register from './src/screens/Register';
 import Home from './src/components/TabsNavigator';
-// import List from './src/screens/List';
 
 export default function App() {
   return (

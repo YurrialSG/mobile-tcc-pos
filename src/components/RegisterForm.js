@@ -6,7 +6,7 @@ export default class RegisterForm extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <StatusBar barStyle="light-content" />
+                <StatusBar backgroundColor="#772ea2" barStyle="light-content" />
                 <TextInput
                     style={styles.input}
                     placeholderTextColor="rgba(225, 225, 225, 1.7)"

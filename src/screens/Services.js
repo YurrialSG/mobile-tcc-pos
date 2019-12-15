@@ -3,19 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 
 function Services() {
     return (
-        <View style={styles.container}>
-            <Text>Services!</Text>
-        </View>
+        <Text>Services!</Text>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#eeeeee',
-    }
-})
 
 export default Services

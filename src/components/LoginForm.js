@@ -43,6 +43,16 @@ function LoginForm() {
             return
         }
 
+        if (data.signin.user.role !== 'USER') {
+            // console.log("E-mail/senha incorretos")
+            ToastAndroid.showWithGravity(
+                'Usuário sem permissão de acesso',
+                ToastAndroid.SHORT,
+                ToastAndroid.CENTER,
+            );
+            return
+        }
+
         if (data.signin.token) {
             AsyncStorage.setItem('token', data.signin.token)
             AsyncStorage.setItem('user', JSON.stringify(data.signin.user))
@@ -53,7 +63,7 @@ function LoginForm() {
 
     return (
         <>
-            <StatusBar barStyle="light-content" />
+            <StatusBar backgroundColor="#772ea2" barStyle="light-content" />
             <View style={styles.container}>
                 <TextInput
                     style={styles.input}

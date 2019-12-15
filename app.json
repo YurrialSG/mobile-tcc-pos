@@ -5,6 +5,9 @@
     "slug": "mobile_tcc_pos",
     "privacy": "public",
     "sdkVersion": "35.0.0",
+    "androidStatusBar": {
+      "backgroundColor": "#4e2ba1"
+    },
     "ios": {
       "bundleIdentifier": "com.yurrialsg.mobile_tcc_pos"
     },

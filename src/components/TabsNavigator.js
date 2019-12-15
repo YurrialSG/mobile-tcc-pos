@@ -1,27 +1,21 @@
-import React, { Component } from 'react';
-import { SafeAreaView } from 'react-native';
+import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { StyleSheet, View } from 'react-native';
 
 import Home from '../screens/Home';
 import Services from '../screens/Services';
 import Settings from '../screens/Settings';
-
-class TabsNavigator extends Component {
-    render() {
-        return (
-            <SafeAreaView>
-                <TabNavigator />
-            </SafeAreaView>
-        );
-    }
-}
+import Header from './Header';
 
 class HomeScreen extends React.Component {
     render() {
         return (
-            <Home />
+            <View style={styles.container}>
+                <Header />
+                <Home />
+            </View>
         );
     }
 }
@@ -29,7 +23,10 @@ class HomeScreen extends React.Component {
 class ServicesScreen extends React.Component {
     render() {
         return (
-            <Services />
+            <View style={styles.container}>
+                <Header />
+                <Services />
+            </View>
         );
     }
 }
@@ -37,7 +34,10 @@ class ServicesScreen extends React.Component {
 class SettingsScreen extends React.Component {
     render() {
         return (
-            <Settings />
+            <View style={styles.container}>
+                <Header />
+                <Settings />
+            </View>
         );
     }
 }
@@ -93,3 +93,12 @@ const TabNavigator = createMaterialTopTabNavigator({
 });
 
 export default createAppContainer(TabNavigator);
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#dddddddd',
+    }
+})

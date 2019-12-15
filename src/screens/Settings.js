@@ -1,21 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text } from 'react-native';
 
 function Settings() {
     return (
-        <View style={styles.container}>
-            <Text>Settings!</Text>
-        </View>
+        <Text>Settings!</Text>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#eeeeee',
-    }
-})
 
 export default Settings
