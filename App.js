@@ -1,7 +1,7 @@
 import React from 'react';
 import { NativeRouter, Switch, Route } from 'react-router-native';
 import { ApolloProvider } from '@apollo/react-hooks';
-import { client } from './src/graphql/client';
+import { client } from './src/components/graphql/client';
 
 import Login from './src/screens/Login';
 import Register from './src/screens/Register';
@@ -12,6 +12,7 @@ export default function App() {
     <ApolloProvider client={client}>
       <NativeRouter>
         <Switch>
+          {/* <Route exact path="/" component={Login} /> */}
           <Route exact path="/" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/home" component={Home} />

@@ -56,7 +56,7 @@ export default index;
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        marginTop: 70,
+        marginTop: 56,
         paddingTop: 0
     }
 });

@@ -8,12 +8,13 @@ import Home from '../screens/Home';
 import Services from '../screens/Services';
 import Settings from '../screens/Settings';
 import Header from './Header';
+import HeaderHome from './HeaderHome';
 
 class HomeScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Header />
+                <HeaderHome />
                 <Home />
             </View>
         );

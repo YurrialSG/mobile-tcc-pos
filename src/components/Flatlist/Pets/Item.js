@@ -1,33 +1,44 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Icon } from 'react-native-elements';
-import { Divider } from 'react-native-elements';
 
 export default function Item({ pet }) {
+
+  async function addPetService(idPet) {
+    try {
+      if (idPet) {
+        await AsyncStorage.setItem('idPetService', idPet);
+      }
+    } catch (error) {
+      // Error saving data
+      console.log('Erro ao inserir async storage')
+    }
+  }
+
   return (
     <View style={styles.item}>
-      <Image
+      {/* <Image
         style={styles.imagePet}
         source={require('../../../../assets/images/dog.jpg')}
-      />
+      /> */}
       <View style={styles.infoPet}>
         <Text style={styles.namePet}>{pet.name}</Text>
-        <Text style={styles.title}>{pet.pet}</Text>
+        {pet.pet === "GATO" ?
+          <Image
+            style={styles.titlePet}
+            source={require('../../../../assets/images/cat.png')}
+          />
+          :
+          <Image
+            style={styles.titlePet}
+            source={require('../../../../assets/images/dog.png')}
+          />
+        }
       </View>
-      <Text style={styles.title}> você é {pet.breed} </Text>
-      <Text style={styles.title}> e tem <Text style={styles.agePet}>{pet.age}</Text> anos </Text>
+      <Text style={styles.title}> você é {pet.breed} e tem <Text style={styles.agePet}>{pet.age}</Text> anos </Text>
       <View style={styles.buttonsActions}>
-        <TouchableOpacity style={styles.buttonAdd}>
-          <Icon
-            name='add'
-            size={20}
-            color='#FFFFFF' />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonEdit}>
-          <Icon
-            name='edit'
-            size={20}
-            color='#FFFFFF' />
+        <TouchableOpacity style={styles.buttonAdd} onPress={() => { addPetService(pet.id) }}>
+          <Text style={styles.textButtonAdd}>Realizar Serviço</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonRemove}>
           <Icon
@@ -62,13 +73,13 @@ const styles = StyleSheet.create({
   infoPet: {
     fontSize: 14,
     textAlign: "left",
-    marginLeft: '30%',
+    marginLeft: '3%',
     borderStyle: "solid",
     flexDirection: "row"
   },
   buttonsActions: {
     flexDirection: "row",
-    marginLeft: '75%',
+    marginLeft: '50%',
   },
   namePet: {
     color: '#ffa000',
@@ -76,24 +87,38 @@ const styles = StyleSheet.create({
     borderStyle: "solid"
   },
   agePet: {
-    color: '#37474f',
-    fontSize: 16
+    color: '#ffa150',
+    fontSize: 12,
+    fontWeight: "bold"
   },
   title: {
     fontSize: 12,
-    marginVertical: 1,
+    marginVertical: 4,
     textAlign: "left",
-    marginLeft: '30%',
+    marginLeft: '3%',
     borderStyle: "solid"
+  },
+  titlePet: {
+    position: "absolute",
+    right: 0,
+    top: 0,
+    width: 50,
+    height: 50,
+    marginLeft: 10,
+    marginVertical: 5,
+    borderRadius: 10
   },
   buttonAdd: {
     alignSelf: "flex-end",
     backgroundColor: '#37474f',
-    paddingHorizontal: 1,
+    paddingHorizontal: 20,
     paddingVertical: 1,
     borderRadius: 4,
     marginVertical: 8,
     marginHorizontal: 4
+  },
+  textButtonAdd: {
+    color: '#FFFFFFFF',
   },
   buttonEdit: {
     alignSelf: "flex-end",

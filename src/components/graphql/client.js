@@ -22,14 +22,16 @@ const allLinks = split(
         return kind === 'OperationDefinition' && operation === 'subscription'
     },
     new WebSocketLink({
-        uri: 'ws://10.0.2.2:4000/graphql',
+        // uri: 'ws://10.0.2.2:4000/graphql',
+        uri: 'ws://192.168.0.13:19000//graphql',
         options: { reconnect: true },
     }),
     authLink.concat(new HttpLink({
         // uri: 'http://10.0.2.2:4000/graphql'
         uri: Platform.select({
             ios: 'http://localhost:4000/graphql',
-            android: 'http://10.0.2.2:4000/graphql'
+            // android: 'http://10.0.2.2:4000/graphql'
+            android: 'http://192.168.0.13:4000/graphql'
         })
     }))
 )

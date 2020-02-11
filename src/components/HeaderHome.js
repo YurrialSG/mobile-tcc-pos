@@ -17,6 +17,25 @@ function Header() {
             })
     })
 
+    function logout() {
+        console.log('to aki')
+        const removed = () => removeAsyncStorage()
+        console.log('removed: ' + removed)
+        if (removed) {
+            history.push('/')
+        }
+    }
+
+    async function removeAsyncStorage() {
+        try {
+            await AsyncStorage.clear()
+            return true;
+        }
+        catch (exception) {
+            return false;
+        }
+    }
+
     return (
         <>
             <StatusBar barStyle="light-content" />
@@ -28,6 +47,9 @@ function Header() {
                 <Text style={styles.textName}>
                     {firstnameUser + " " + lastnameUser}
                 </Text>
+                <TouchableOpacity onPress={logout} style={styles.buttonLogout}>
+                    <Text style={styles.buttonText}>Sair</Text>
+                </TouchableOpacity>
             </View>
         </>
     )
@@ -63,5 +85,21 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginVertical: 5,
         borderRadius: 10
+    },
+    buttonLogout: {
+        position: "absolute",
+        width: 150,
+        height: 22,
+        top: "20%",
+        left: "75%",
+        bottom: "20%",
+        paddingRight: 90,
+        backgroundColor: '#FFFFFF',
+        borderRadius: 4,
+    },
+    buttonText: {
+        textAlign: 'center',
+        color: '#000000',
+        fontWeight: '700'
     }
 });
