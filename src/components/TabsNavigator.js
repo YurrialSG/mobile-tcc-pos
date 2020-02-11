@@ -24,7 +24,7 @@ class HomeScreen extends React.Component {
 class ServicesScreen extends React.Component {
     render() {
         return (
-            <View style={styles.container}>
+            <View style={styles.containerService}>
                 <Header />
                 <Services />
             </View>
@@ -35,7 +35,7 @@ class ServicesScreen extends React.Component {
 class SettingsScreen extends React.Component {
     render() {
         return (
-            <View style={styles.container}>
+            <View style={styles.containerService}>
                 <Header />
                 <Settings />
             </View>
@@ -101,5 +101,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#dddddddd',
+    },
+    containerService: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFFFFF',
     }
 })

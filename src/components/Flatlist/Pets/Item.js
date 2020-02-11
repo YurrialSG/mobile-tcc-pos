@@ -1,13 +1,17 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Icon } from 'react-native-elements';
+import { useHistory } from 'react-router-native';
 
 export default function Item({ pet }) {
+
+  const history = useHistory()
 
   async function addPetService(idPet) {
     try {
       if (idPet) {
         await AsyncStorage.setItem('idPetService', idPet);
+        history.push('/serviceNew')
       }
     } catch (error) {
       // Error saving data

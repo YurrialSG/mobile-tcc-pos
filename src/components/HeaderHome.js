@@ -7,22 +7,27 @@ function Header() {
 
     const [firstnameUser, setFirstnameUser] = useState("")
     const [lastnameUser, setLastnameUser] = useState("")
+    const [user, setUser] = useState(false)
 
     useEffect(() => {
         AsyncStorage.getItem('user')
             .then((value) => {
                 const data = JSON.parse(value);
-                setFirstnameUser(data.firstname)
-                setLastnameUser(data.lastname)
+                if (data) {
+                    setUser(true)
+                    setFirstnameUser(data.firstname)
+                    setLastnameUser(data.lastname)
+                }
             })
     })
 
     function logout() {
-        console.log('to aki')
         const removed = () => removeAsyncStorage()
-        console.log('removed: ' + removed)
         if (removed) {
-            history.push('/')
+            user ?
+                history.push('/login')
+                :
+                history.push('/')
         }
     }
 

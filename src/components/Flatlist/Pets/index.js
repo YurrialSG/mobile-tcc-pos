@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, FlatList  } from 'react-native';
+import { StyleSheet, FlatList  } from 'react-native';
 import { useQuery } from 'react-apollo';
 import gql from 'graphql-tag';
 

@@ -15,7 +15,7 @@ function Services() {
 
     return (
         <View>
-            <Text>ID -> {idPet}</Text>
+            <Text>Services List</Text>
         </View>
     )
 }
