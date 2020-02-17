@@ -26,18 +26,18 @@ export default function App() {
   return (
     <ApolloProvider client={client}>
       <NativeRouter>
-        {user ?
+        {/* {user ?
           <Switch>
-            {/* <Route exact path="/" component={Login} /> */}
+            /* <Route exact path="/" component={Login} /> */
+          /* <Route exact path="/" component={Home} />
+          <Route path="/serviceNew" component={ServiceNew} />
+          <Route path="/register" component={Register} />
+          <Route path="/home" component={Home} />
+          <Route path="/login" component={Login} />
+        </Switch> */
+          /* : */
+          <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/serviceNew" component={ServiceNew} />
-            <Route path="/register" component={Register} />
-            <Route path="/home" component={Home} />
-            <Route path="/login" component={Login} />
-          </Switch>
-          :
-          <Switch>
-            <Route exact path="/" component={Login} />
             <Route path="/serviceNew" component={ServiceNew} />
             <Route path="/register" component={Register} />
             <Route path="/home" component={Home} />

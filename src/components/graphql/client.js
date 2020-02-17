@@ -6,13 +6,22 @@ import { setContext } from 'apollo-link-context';
 import { AsyncStorage, Platform } from 'react-native';
 
 
-const authLink = setContext((_, { headers }) => {
-    const token = AsyncStorage.getItem('token')
-    return {
-        headers: {
-            ...headers,
-            authorization: token ? `Bearer ${token}` : ''
+const authLink = setContext(async (_, { headers }) => {
+    try {
+        const token = await AsyncStorage.getItem('token');
+        if (token !== null) {
+            // We have data!!
+            // console.log(token);
         }
+
+        return {
+            headers: {
+                ...headers,
+                authorization: token ? `Bearer ${token}` : ''
+            }
+        }
+    } catch (error) {
+        console.log("Erro ao pegar token no AsyncStorage")
     }
 })
 
@@ -23,7 +32,7 @@ const allLinks = split(
     },
     new WebSocketLink({
         // uri: 'ws://10.0.2.2:4000/graphql',
-        uri: 'ws://192.168.0.13:19000//graphql',
+        uri: 'ws://192.168.0.13:4000/graphql',
         options: { reconnect: true },
     }),
     authLink.concat(new HttpLink({

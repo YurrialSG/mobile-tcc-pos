@@ -24,9 +24,9 @@ function Header() {
     function logout() {
         const removed = () => removeAsyncStorage()
         if (removed) {
-            user ?
-                history.push('/login')
-                :
+            // user ?
+                // history.push('/login')
+                // :
                 history.push('/')
         }
     }

@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "mobile_tcc_pos",
+    "name": "Pata Marca",
     "icon": "./assets/logo.png",
-    "slug": "mobile_tcc_pos",
+    "slug": "PataMarca",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "androidStatusBar": {

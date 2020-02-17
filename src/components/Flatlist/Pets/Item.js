@@ -39,7 +39,7 @@ export default function Item({ pet }) {
           />
         }
       </View>
-      <Text style={styles.title}> você é {pet.breed} e tem <Text style={styles.agePet}>{pet.age}</Text> anos </Text>
+      <Text style={styles.title}> você é <Text style={styles.breedPet}>{pet.breed}</Text> e tem <Text style={styles.agePet}>{pet.age}</Text> anos </Text>
       <View style={styles.buttonsActions}>
         <TouchableOpacity style={styles.buttonAdd} onPress={() => { addPetService(pet.id) }}>
           <Text style={styles.textButtonAdd}>Realizar Serviço</Text>
@@ -83,24 +83,31 @@ const styles = StyleSheet.create({
   },
   buttonsActions: {
     flexDirection: "row",
-    marginLeft: '50%',
+    justifyContent: "flex-end"
   },
   namePet: {
     color: '#ffa000',
     fontSize: 20,
+    fontWeight: "bold",
     borderStyle: "solid"
   },
   agePet: {
-    color: '#ffa150',
-    fontSize: 12,
+    color: '#8d6e63',
+    fontSize: 14,
+    fontWeight: "bold"
+  },
+  breedPet: {
+    color: '#8d6e63',
+    fontSize: 14,
     fontWeight: "bold"
   },
   title: {
-    fontSize: 12,
-    marginVertical: 4,
+    fontSize: 14,
+    paddingTop: 5,
+    paddingBottom: 5,
     textAlign: "left",
-    marginLeft: '3%',
-    borderStyle: "solid"
+    paddingLeft: '3%',
+    borderStyle: "solid",
   },
   titlePet: {
     position: "absolute",
@@ -119,7 +126,8 @@ const styles = StyleSheet.create({
     paddingVertical: 1,
     borderRadius: 4,
     marginVertical: 8,
-    marginHorizontal: 4
+    marginHorizontal: 8,
+    marginLeft: '40%'
   },
   textButtonAdd: {
     color: '#FFFFFFFF',

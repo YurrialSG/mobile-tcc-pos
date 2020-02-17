@@ -25,7 +25,8 @@ function LoginForm() {
         }
     `);
 
-    handleSubmit = async () => {
+    async function handleSubmit() {
+
         const { data } = await mutate({
             variables: {
                 email: email,
