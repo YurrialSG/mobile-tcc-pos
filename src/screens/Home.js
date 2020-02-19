@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
-import FlatlistPets from '../components/Flatlist/Pets'
+import FlatlistPets from '../components/Flatlist/Pets';
 
 function Home() {
     return (

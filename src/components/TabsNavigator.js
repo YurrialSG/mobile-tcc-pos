@@ -14,7 +14,7 @@ class HomeScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <HeaderHome />
+                <Header />
                 <Home />
             </View>
         );
@@ -24,8 +24,8 @@ class HomeScreen extends React.Component {
 class ServicesScreen extends React.Component {
     render() {
         return (
-            <View style={styles.containerService}>
-                <Header />
+            <View style={styles.container}>
+                <HeaderHome />
                 <Services />
             </View>
         );
@@ -47,9 +47,9 @@ const TabNavigator = createMaterialTopTabNavigator({
     Home: {
         screen: HomeScreen,
         navigationOptions: {
-            tabBarLabel: 'Home',
+            tabBarLabel: 'Pets',
             tabBarIcon: ({ tintColor }) => (
-                <Icon name="ios-home" color={tintColor} size={20} />
+                <Icon name="ios-paw" color={tintColor} size={20} />
             )
         }
     },
@@ -58,7 +58,7 @@ const TabNavigator = createMaterialTopTabNavigator({
         navigationOptions: {
             tabBarLabel: 'Serviços',
             tabBarIcon: ({ tintColor }) => (
-                <Icon name="ios-paw" color={tintColor} size={20} />
+                <Icon name="ios-apps" color={tintColor} size={20} />
             )
         }
     },
@@ -72,10 +72,10 @@ const TabNavigator = createMaterialTopTabNavigator({
         }
     },
 }, {//router config
-    initialRouteName: 'Home',
+    initialRouteName: 'Services',
     tabBarPosition: 'bottom',
     swipeEnabled: true,
-    order: ['Home', 'Services', 'Settings'],
+    order: ['Services', 'Home', 'Settings'],
     tabBarOptions: {
         activeTintColor: '#1b0000',
         inactiveTintColor: '#6a4f4b',
