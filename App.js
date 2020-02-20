@@ -7,6 +7,7 @@ import { client } from './src/components/graphql/client';
 import Login from './src/screens/Login';
 import Register from './src/screens/Register';
 import ServiceNew from './src/screens/ServiceNew';
+import PetNew from './src/screens/PetNew';
 import Home from './src/components/TabsNavigator';
 
 export default function App() {
@@ -39,6 +40,7 @@ export default function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/serviceNew" component={ServiceNew} />
+            <Route path="/petNew" component={PetNew} />
             <Route path="/register" component={Register} />
             <Route path="/home" component={Home} />
           </Switch>

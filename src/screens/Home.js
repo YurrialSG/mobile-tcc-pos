@@ -1,12 +1,17 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
+import { useHistory } from 'react-router-native';
+
 import FlatlistPets from '../components/Flatlist/Pets';
 
 function Home() {
+
+    const history = useHistory()
+
     return (
         <>
-            <TouchableOpacity style={styles.buttonAddPet} onPress={() => { }}>
+            <TouchableOpacity style={styles.buttonAddPet} onPress={() => { history.push('/petNew') }}>
                 <View style={styles.buttonsActions}>
                     <Icon
                         name='add'
@@ -28,6 +33,7 @@ const styles = StyleSheet.create({
     buttonAddPet: {
         backgroundColor: '#FFFFFFFF',
         width: '100%',
+        height: '5%',
         marginTop: 56,
         paddingTop: 0,
     },
