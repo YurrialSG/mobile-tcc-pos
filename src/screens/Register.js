@@ -5,7 +5,7 @@ import RegisterForm from '../components/RegisterForm';
 
 function Register() {
     return (
-        <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <KeyboardAvoidingView behavior="height" style={styles.container}>
             <View style={styles.formContainer}>
                 <RegisterForm />
             </View>
@@ -16,6 +16,7 @@ function Register() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        paddingTop: 50,
         backgroundColor: '#ffa000',
     },
     formContainer: {
