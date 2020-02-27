@@ -15,6 +15,7 @@ export default function App() {
   const [user, setUser] = useState(false)
 
   useEffect(() => {
+    AsyncStorage.clear()
     AsyncStorage.getItem('user')
       .then((value) => {
         const data = JSON.parse(value);
