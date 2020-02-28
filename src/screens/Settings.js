@@ -1,9 +1,23 @@
-import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, AsyncStorage } from 'react-native';
 function Settings() {
+
+    const [firstnameUser, setFirstnameUser] = useState("")
+    const [lastnameUser, setLastnameUser] = useState("")
+
+    useEffect(() => {
+        AsyncStorage.getItem('user')
+            .then((value) => {
+                const data = JSON.parse(value);
+                setFirstnameUser(data.firstname)
+                setLastnameUser(data.lastname)
+            })
+    })
+
     return (
         <View style={styles.container}>
-            <Text style={styles.titleType}>PROFILE</Text>
+            <Text style={styles.titleType}>Informações Pessoais</Text>
+            <Text style={styles.titleType}>Nome: {firstnameUser} {lastnameUser}</Text>
         </View>
     )
 }

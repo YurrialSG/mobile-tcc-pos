@@ -35,8 +35,8 @@ const allLinks = split(
         // uri: 'ws://10.0.2.2:4000/graphql',
         //rodar Expo
         // uri: 'ws://192.168.0.13:4000/graphql',
-        uri: 'https://pata-marca-api.herokuapp.com/',
-        options: { reconnect: true },
+        uri: 'ws://pata-marca-api.herokuapp.com/graphql',
+        options: { lazy: true },
     }),
     authLink.concat(new HttpLink({
         // uri: 'http://10.0.2.2:4000/graphql'
