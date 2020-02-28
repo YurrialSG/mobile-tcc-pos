@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, AsyncStorage, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { Text, View, AsyncStorage, StyleSheet, TouchableOpacity, ScrollView, Alert, ActivityIndicator } from 'react-native';
 import { useHistory } from 'react-router-native';
 import { useMutation } from 'react-apollo';
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
@@ -14,6 +14,7 @@ function ServiceNew() {
     const history = useHistory()
 
     const [idPet, setIdPet] = useState(0)
+    const [idUser, setIdUser] = useState(0)
     const [petName, setPetName] = useState("")
     const [petAge, setPetAge] = useState("")
     const [petBreed, setPetBreeed] = useState("")
@@ -49,6 +50,10 @@ function ServiceNew() {
                     breed
                     pet
                 }
+                user {
+                    id
+                    email
+                }
             }
         }
     `)
@@ -56,14 +61,20 @@ function ServiceNew() {
     async function loadingPet() {
         try {
             const value = await AsyncStorage.getItem('idPetService');
+            const valueIdUser = await AsyncStorage.getItem('user');
             if (value !== null) {
                 // We have data!!
                 // console.log("value: " + value)
                 await setIdPet(value)
                 // console.log("idPet: " + idPet)
             }
+
+            if (valueIdUser !== null) {
+                const data = JSON.parse(valueIdUser);
+                await setIdUser(data.id)
+            }
         } catch (error) {
-            console.log("Erro ao pegar idPet")
+            console.log("Erro ao pegar AsyncStorage")
         }
 
         const { data } = await mutate({
@@ -114,6 +125,9 @@ function ServiceNew() {
                     payment: "AGUARDANDO",
                     pet: {
                         id: idPet
+                    },
+                    user: {
+                        id: idUser
                     }
                 }
             }
@@ -132,24 +146,31 @@ function ServiceNew() {
                 <ProgressSteps>
                     <ProgressStep label="Pet">
                         <View style={{ alignItems: 'center' }}>
-                            <ScrollView>
-                                <Card style={styles.card}>
-                                    <CardImage
-                                        source={{ uri: 'http://bit.ly/2GfzooV' }}
-                                        title={petName}
-                                    />
-                                    <CardTitle />
-                                    <CardContent text={
-                                        <>
-                                            Idade: {petAge}
-                                            {"\n"}
-                                            Raça: {petBreed}
-                                            {"\n"}
-                                            Pet: {petPet}
-                                        </>
-                                    } />
+                            {petName === "" ?
+                                <Card style={styles.cardLoading}>
+                                    <Text style={{ fontSize: 22 }} >Loading...</Text>
+                                    <ActivityIndicator size="small" color="#fff022" />
                                 </Card>
-                            </ScrollView>
+                                :
+                                <ScrollView>
+                                    <Card style={styles.card}>
+                                        <CardImage
+                                            source={{ uri: 'http://bit.ly/2GfzooV' }}
+                                            title={petName}
+                                        />
+                                        <CardTitle />
+                                        <CardContent text={
+                                            <>
+                                                Idade: {petAge}
+                                                {"\n"}
+                                                Raça: {petBreed}
+                                                {"\n"}
+                                                Pet: {petPet}
+                                            </>
+                                        } />
+                                    </Card>
+                                </ScrollView>
+                            }
                         </View>
                     </ProgressStep>
                     <ProgressStep label="Data/Horário">
@@ -181,6 +202,7 @@ function ServiceNew() {
                         </View>
                     </ProgressStep>
                 </ProgressSteps>
+
             </View>
             <TouchableOpacity onPress={goBack} style={styles.buttonBack}>
                 <Text style={styles.buttonText}>VOLTAR</Text>
@@ -199,6 +221,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#FFFFFF',
+    },
+    containerLoading: {
+        flex: 1,
     },
     buttonBack: {
         width: '100%',
@@ -219,6 +244,13 @@ const styles = StyleSheet.create({
         width: 310,
         height: 300,
         textAlign: "center"
+    },
+    cardLoading: {
+        width: 310,
+        height: 300,
+        textAlign: "center",
+        justifyContent: "center",
+        alignItems: "center"
     },
     info: {
         textAlign: "center",

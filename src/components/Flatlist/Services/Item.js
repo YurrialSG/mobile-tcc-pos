@@ -115,6 +115,7 @@ export default function Item({ service }) {
             progress={pagamento}
           />
         </View>
+        <Text style={styles.title}>Cliente: {service.user.firstname} {service.user.lastname}</Text>
       </View>
   );
 }

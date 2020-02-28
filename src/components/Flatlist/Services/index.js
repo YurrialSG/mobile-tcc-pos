@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, FlatList, View, Text } from 'react-native';
+import { StyleSheet, FlatList, View, Text, ActivityIndicator } from 'react-native';
 import { useQuery, useSubscription } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -24,6 +24,11 @@ function index() {
                     breed
                     pet
                 }
+                user {
+                    id
+                    firstname
+                    lastname
+                }
             }
         }
     `)
@@ -42,6 +47,11 @@ function index() {
                 age
                 breed
                 pet
+            }
+            user {
+                id
+                firstname
+                lastname
             }
         }
     }
@@ -93,7 +103,7 @@ function index() {
             </View>
             :
             <View style={styles.containerLoading, styles.horizontal}>
-                <Text>Nenhum serviço encontrado.</Text>
+                <ActivityIndicator size="large" color="#0000ff" />
             </View>
         )
     );
