@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextInput, StyleSheet, View, Text, StatusBar, TouchableOpacity, Alert } from 'react-native'
+import { TextInput, StyleSheet, View, Text, StatusBar, TouchableOpacity, Alert, ScrollView } from 'react-native'
 import { Link } from 'react-router-native';
 import { useMutation } from 'react-apollo';
 import { useHistory } from 'react-router-native';
@@ -89,100 +89,104 @@ function RegisterForm() {
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor="#772ea2" barStyle="light-content" />
-            <TextInput
-                style={styles.input}
-                placeholderTextColor="rgba(225, 225, 225, 1.7)"
-                returnKeyType="next"
-                value={firstname}
-                onChangeText={value => setFirstname(value)}
-                autoCapitalize="none"
-                autoCorrect={false}
-                placeholder="Nome"
-            />
-            <TextInput
-                style={styles.input}
-                placeholderTextColor="rgba(225, 225, 225, 1.7)"
-                returnKeyType="next"
-                value={lastname}
-                onChangeText={value => setLastname(value)}
-                autoCapitalize="none"
-                autoCorrect={false}
-                placeholder="Sobrenome"
-            />
-            <TextInput
-                style={styles.input}
-                placeholderTextColor="rgba(225, 225, 225, 1.7)"
-                returnKeyType="next"
-                value={email}
-                onChangeText={value => setEmail(value)}
-                keyboardType="email-address"
-                autoCompleteType="email"
-                autoCapitalize="none"
-                autoCorrect={false}
-                placeholder="E-mail"
-            />
-            <TextInput
-                style={styles.input}
-                placeholderTextColor="rgba(225, 225, 225, 1.7)"
-                returnKeyType="next"
-                value={password}
-                onChangeText={value => setPassword(value)}
-                keyboardType="visible-password"
-                autoCompleteType="password"
-                autoCapitalize="none"
-                autoCorrect={false}
-                placeholder="Senha"
-            />
-            <TextInput
-                style={styles.input}
-                placeholderTextColor="rgba(225, 225, 225, 1.7)"
-                returnKeyType="next"
-                value={street}
-                onChangeText={value => setStreet(value)}
-                autoCapitalize="none"
-                autoCorrect={false}
-                placeholder="Rua"
-            />
-            <TextInput
-                style={styles.input}
-                placeholderTextColor="rgba(225, 225, 225, 1.7)"
-                returnKeyType="next"
-                value={number}
-                onChangeText={value => setNumber(value)}
-                keyboardType="numeric"
-                autoCompleteType="cc-number"
-                autoCapitalize="none"
-                autoCorrect={false}
-                placeholder="Número"
-            />
-            <TextInput
-                style={styles.input}
-                placeholderTextColor="rgba(225, 225, 225, 1.7)"
-                returnKeyType="next"
-                value={complement}
-                onChangeText={value => setComplement(value)}
-                keyboardType="numeric"
-                autoCompleteType="cc-number"
-                autoCapitalize="none"
-                autoCorrect={false}
-                placeholder="Complemento"
-            />
-            <TextInput
-                style={styles.input}
-                placeholderTextColor="rgba(225, 225, 225, 1.7)"
-                returnKeyType="next"
-                value={zip_code}
-                onChangeText={value => setZip_code(value)}
-                autoCapitalize="none"
-                autoCorrect={false}
-                placeholder="CEP"
-            />
-            <TouchableOpacity onPress={handleSubmit} style={styles.buttonLogin}>
-                <Text style={styles.buttonText}>Cadastrar-se</Text>
-            </TouchableOpacity>
-            <Link to="/" style={styles.buttonRegister}>
-                <Text style={styles.buttonText}>Voltar</Text>
-            </Link>
+            <Text style={styles.title}>Pata Marca</Text>
+            <Text style={styles.subtitle}>Gerenciador de Banho e Tosa</Text>
+            <ScrollView>
+                <TextInput
+                    style={styles.input}
+                    placeholderTextColor="rgba(225, 225, 225, 1.7)"
+                    returnKeyType="next"
+                    value={firstname}
+                    onChangeText={value => setFirstname(value)}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    placeholder="Nome"
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholderTextColor="rgba(225, 225, 225, 1.7)"
+                    returnKeyType="next"
+                    value={lastname}
+                    onChangeText={value => setLastname(value)}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    placeholder="Sobrenome"
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholderTextColor="rgba(225, 225, 225, 1.7)"
+                    returnKeyType="next"
+                    value={email}
+                    onChangeText={value => setEmail(value)}
+                    keyboardType="email-address"
+                    autoCompleteType="email"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    placeholder="E-mail"
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholderTextColor="rgba(225, 225, 225, 1.7)"
+                    returnKeyType="next"
+                    value={password}
+                    onChangeText={value => setPassword(value)}
+                    keyboardType="visible-password"
+                    autoCompleteType="password"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    placeholder="Senha"
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholderTextColor="rgba(225, 225, 225, 1.7)"
+                    returnKeyType="next"
+                    value={street}
+                    onChangeText={value => setStreet(value)}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    placeholder="Rua"
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholderTextColor="rgba(225, 225, 225, 1.7)"
+                    returnKeyType="next"
+                    value={number}
+                    onChangeText={value => setNumber(value)}
+                    keyboardType="numeric"
+                    autoCompleteType="cc-number"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    placeholder="Número"
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholderTextColor="rgba(225, 225, 225, 1.7)"
+                    returnKeyType="next"
+                    value={complement}
+                    onChangeText={value => setComplement(value)}
+                    keyboardType="numeric"
+                    autoCompleteType="cc-number"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    placeholder="Complemento"
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholderTextColor="rgba(225, 225, 225, 1.7)"
+                    returnKeyType="next"
+                    value={zip_code}
+                    onChangeText={value => setZip_code(value)}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    placeholder="CEP"
+                />
+                <TouchableOpacity onPress={handleSubmit} style={styles.buttonLogin}>
+                    <Text style={styles.buttonText}>Cadastrar-se</Text>
+                </TouchableOpacity>
+                <Link to="/" style={styles.buttonRegister}>
+                    <Text style={styles.buttonText}>Voltar</Text>
+                </Link>
+            </ScrollView>
         </View>
     );
 }
@@ -191,7 +195,25 @@ export default RegisterForm;
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20,
+        padding: 20
+    },
+    title: {
+        color: '#FFF',
+        width: 160,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: "justify",
+        opacity: 0.9,
+    },
+    subtitle: {
+        color: '#FFF',
+        marginTop: 1,
+        width: 260,
+        fontSize: 12,
+        fontWeight: 'bold',
+        textAlign: "justify",
+        opacity: 0.6,
+        marginBottom: 10
     },
     input: {
         height: 40,

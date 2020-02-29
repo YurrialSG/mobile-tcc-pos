@@ -16,7 +16,6 @@ function Register() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 50,
         backgroundColor: '#ffa000',
     },
     formContainer: {

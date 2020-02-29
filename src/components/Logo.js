@@ -9,7 +9,8 @@ export default class LoginForm extends Component {
                     style={styles.logo}
                     source={require('../../assets/logo.png')}
                 />
-                <Text style={styles.title}>Pet Shop Banho e Tosa</Text>
+                <Text style={styles.title}>Pata Marca</Text>
+                <Text style={styles.subtitle}>Gerenciador de Banho e Tosa</Text>
             </View>
         );
     }
@@ -29,9 +30,18 @@ const styles = StyleSheet.create({
         color: '#FFF',
         marginTop: 10,
         width: 160,
-        fontSize: 15,
+        fontSize: 22,
         fontWeight: 'bold',
         textAlign: 'center',
         opacity: 0.9,
+    },
+    subtitle: {
+        color: '#FFF',
+        marginTop: 5,
+        width: 260,
+        fontSize: 14,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        opacity: 0.6,
     }
 });
