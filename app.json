@@ -12,14 +12,15 @@
       "bundleIdentifier": "com.yurrialsg.mobile_tcc_pos"
     },
     "android": {
-      "package": "com.yurrialsg.mobile_tcc_pos"
+      "package": "com.yurrialsg.mobile_tcc_pos",
+      "versionCode": 2
     },
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "splash": {
       "resizeMode": "contain",

@@ -43,11 +43,13 @@ const allLinks = split(
         uri: Platform.select({
             // ios: 'https://pata-marca-api.herokuapp.com/',
             //rodar Expo
-            ios: 'http://192.168.0.13:4000/graphql',
+            // ios: 'http://192.168.0.13:4000/graphql',
+            ios: 'http://pata-marca-api.herokuapp.com/graphql',
             //rodar Android Studio
             // android: 'http://10.0.2.2:4000/graphql'
             //rodar Expo
-            android: 'https://pata-marca-api.herokuapp.com/'
+            // android: 'http://192.168.0.13:4000/graphql'
+            android: 'http://pata-marca-api.herokuapp.com/graphql'
         })
     }))
 )
