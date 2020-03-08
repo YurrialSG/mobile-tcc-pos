@@ -56,7 +56,7 @@ const TabNavigator = createMaterialTopTabNavigator({
     Services: {
         screen: ServicesScreen,
         navigationOptions: {
-            tabBarLabel: 'Serviços',
+            tabBarLabel: 'Services',
             tabBarIcon: ({ tintColor }) => (
                 <Icon name="ios-apps" color={tintColor} size={20} />
             )
@@ -65,7 +65,7 @@ const TabNavigator = createMaterialTopTabNavigator({
     Settings: {
         screen: SettingsScreen,
         navigationOptions: {
-            tabBarLabel: 'Configurações',
+            tabBarLabel: 'Settings',
             tabBarIcon: ({ tintColor }) => (
                 <Icon name="ios-settings" color={tintColor} size={20} />
             )

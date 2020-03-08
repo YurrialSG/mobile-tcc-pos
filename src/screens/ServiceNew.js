@@ -93,7 +93,7 @@ function ServiceNew() {
 
 
     useEffect(() => {
-        Moment.locale('pt-BR');
+        // Moment.locale('pt-BR');
         loadingPet()
     }, [idPet])
 

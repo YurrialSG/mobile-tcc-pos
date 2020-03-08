@@ -69,17 +69,17 @@ function Settings() {
     return (
         <View style={styles.container}>
             <View style={styles.bodyProfile}>
-                <Text style={styles.title}>Informações Pessoais</Text>
-                <Text style={styles.titleType}>Nome: {firstnameUser} {lastnameUser}</Text>
+                <Text style={styles.title}>Profile Data</Text>
+                <Text style={styles.titleType}>Name: {firstnameUser} {lastnameUser}</Text>
                 <Text style={styles.titleType}>E-mail: {emailUser}</Text>
-                <Text style={styles.titleType}>Endereço: {streetUser}, {numberUser}</Text>
+                <Text style={styles.titleType}>Street: {streetUser}, {numberUser}</Text>
                 {complementUser === null ?
                     <>
                     </>
                     :
-                    <Text style={styles.titleType}>Complemento: {complementUser}</Text>
+                    <Text style={styles.titleType}>Complement: {complementUser}</Text>
                 }
-                <Text style={styles.titleType}>CEP: {zip_codeUser}</Text>
+                <Text style={styles.titleType}>Zip code: {zip_codeUser}</Text>
             </View>
             <ScrollView>
                 <ServicesHistory />

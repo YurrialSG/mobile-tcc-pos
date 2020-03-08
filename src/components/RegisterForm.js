@@ -100,7 +100,7 @@ function RegisterForm() {
                     onChangeText={value => setFirstname(value)}
                     autoCapitalize="none"
                     autoCorrect={false}
-                    placeholder="Nome"
+                    placeholder="Name"
                 />
                 <TextInput
                     style={styles.input}
@@ -110,7 +110,7 @@ function RegisterForm() {
                     onChangeText={value => setLastname(value)}
                     autoCapitalize="none"
                     autoCorrect={false}
-                    placeholder="Sobrenome"
+                    placeholder="Lastname"
                 />
                 <TextInput
                     style={styles.input}
@@ -129,12 +129,12 @@ function RegisterForm() {
                     placeholderTextColor="rgba(225, 225, 225, 1.7)"
                     returnKeyType="next"
                     value={password}
+                    secureTextEntry={true}
                     onChangeText={value => setPassword(value)}
-                    keyboardType="visible-password"
                     autoCompleteType="password"
                     autoCapitalize="none"
                     autoCorrect={false}
-                    placeholder="Senha"
+                    placeholder="Password"
                 />
                 <TextInput
                     style={styles.input}
@@ -144,7 +144,7 @@ function RegisterForm() {
                     onChangeText={value => setStreet(value)}
                     autoCapitalize="none"
                     autoCorrect={false}
-                    placeholder="Rua"
+                    placeholder="Street"
                 />
                 <TextInput
                     style={styles.input}
@@ -156,7 +156,7 @@ function RegisterForm() {
                     autoCompleteType="cc-number"
                     autoCapitalize="none"
                     autoCorrect={false}
-                    placeholder="Número"
+                    placeholder="Number"
                 />
                 <TextInput
                     style={styles.input}
@@ -168,7 +168,7 @@ function RegisterForm() {
                     autoCompleteType="cc-number"
                     autoCapitalize="none"
                     autoCorrect={false}
-                    placeholder="Complemento"
+                    placeholder="Complement"
                 />
                 <TextInput
                     style={styles.input}
@@ -176,15 +176,17 @@ function RegisterForm() {
                     returnKeyType="next"
                     value={zip_code}
                     onChangeText={value => setZip_code(value)}
+                    keyboardType="numeric"
+                    autoCompleteType="cc-number"
                     autoCapitalize="none"
                     autoCorrect={false}
-                    placeholder="CEP"
+                    placeholder="Zip code"
                 />
                 <TouchableOpacity onPress={handleSubmit} style={styles.buttonLogin}>
-                    <Text style={styles.buttonText}>Cadastrar-se</Text>
+                    <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
                 <Link to="/" style={styles.buttonRegister}>
-                    <Text style={styles.buttonText}>Voltar</Text>
+                    <Text style={styles.buttonText}>Back</Text>
                 </Link>
             </ScrollView>
         </View>

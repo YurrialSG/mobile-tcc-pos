@@ -18,7 +18,7 @@ function Home() {
                         size={20}
                         color='#ffa000' />
                     <Text style={styles.textButton}>
-                        Adicionar Pet
+                        Add Pet
                     </Text>
                 </View>
             </TouchableOpacity>

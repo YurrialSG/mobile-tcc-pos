@@ -91,14 +91,14 @@ function LoginForm() {
                     returnKeyType="go"
                     value={password}
                     onChangeText={value => setPassword(value)}
-                    placeholder="Senha"
+                    placeholder="Password"
                     ref={(input) => this.passwordInput = input}
                 />
                 <TouchableOpacity onPress={handleSubmit} style={styles.buttonLogin}>
-                    <Text style={styles.buttonText}>Login</Text>
+                    <Text style={styles.buttonText}>Sign in</Text>
                 </TouchableOpacity>
                 <Link to="/register" style={styles.buttonRegister}>
-                    <Text style={styles.buttonText}>Cadastrar-se</Text>
+                    <Text style={styles.buttonText}>Register</Text>
                 </Link>
             </View>
         </>

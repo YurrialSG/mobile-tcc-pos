@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         paddingTop: 0,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#dddddddd',
+        backgroundColor: '#ffa910',
     },
     buttonBack: {
         width: '100%',
@@ -56,17 +56,4 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontWeight: '700'
     },
-    card: {
-        width: 310,
-        height: 300,
-        textAlign: "center"
-    },
-    info: {
-        textAlign: "center",
-        fontSize: 15,
-        fontStyle: "italic",
-        padding: 10,
-        marginTop: 20,
-        color: '#338833'
-    }
 });

@@ -53,7 +53,7 @@ function Header() {
                     {firstnameUser + " " + lastnameUser}
                 </Text>
                 <TouchableOpacity onPress={logout} style={styles.buttonLogout}>
-                    <Text style={styles.buttonText}>Sair</Text>
+                    <Text style={styles.buttonText}>Log out</Text>
                 </TouchableOpacity>
             </View>
         </>

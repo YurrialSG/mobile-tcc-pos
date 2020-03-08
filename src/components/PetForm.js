@@ -68,7 +68,7 @@ function PetForm() {
                 onChangeText={value => setName(value)}
                 autoCapitalize="none"
                 autoCorrect={false}
-                placeholder="Nome"
+                placeholder="Name"
             />
             <TextInput
                 style={styles.input}
@@ -80,7 +80,7 @@ function PetForm() {
                 onChangeText={value => setAge(value)}
                 autoCapitalize="none"
                 autoCorrect={false}
-                placeholder="Idade"
+                placeholder="Age"
             />
             <TextInput
                 style={styles.input}
@@ -90,7 +90,7 @@ function PetForm() {
                 onChangeText={value => setBreed(value)}
                 autoCapitalize="none"
                 autoCorrect={false}
-                placeholder="Raça"
+                placeholder="Breed"
             />
             <Picker
                 style={styles.input}
@@ -99,11 +99,11 @@ function PetForm() {
                     setPet(itemValue)
                 }
             >
-                <Picker.Item label="Cachorro" value="CACHORRO" />
-                <Picker.Item label="Gato" value="GATO" />
+                <Picker.Item label="Dog" value="CACHORRO" />
+                <Picker.Item label="Cat" value="GATO" />
             </Picker>
             <TouchableOpacity onPress={handleSubmit} style={styles.buttonLogin}>
-                <Text style={styles.buttonText}>Cadastrar-se</Text>
+                <Text style={styles.buttonText}>Register Pet</Text>
             </TouchableOpacity>
         </View>
     );
@@ -114,11 +114,10 @@ export default PetForm;
 const styles = StyleSheet.create({
     container: {
         width: '80%',
-        height: 100
     },
     input: {
         height: 40,
-        backgroundColor: '#1a237e',
+        backgroundColor: 'rgba(225, 225, 225, 0.2)',
         marginBottom: 10,
         color: '#FFF',
         paddingHorizontal: 10,
@@ -127,10 +126,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#1a237e',
         paddingVertical: 15,
         marginBottom: 10,
-    },
-    buttonRegister: {
-        backgroundColor: '#64b5f6',
-        paddingVertical: 15,
     },
     buttonText: {
         textAlign: 'center',

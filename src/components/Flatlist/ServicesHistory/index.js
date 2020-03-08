@@ -86,8 +86,8 @@ function index() {
         // ))
         (data ?
             <View style={styles.container}>
-                <Text style={styles.title}>LISTA DE SERVIÇOS REALIZADOS</Text>
-                <Text style={styles.titleType}>Histórico</Text>
+                <Text style={styles.title}>List of services performed</Text>
+                <Text style={styles.titleType}>Historic</Text>
                 <FlatList
                     data={services}
                     onRefresh={refetch}
