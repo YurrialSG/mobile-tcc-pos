@@ -13,15 +13,20 @@ function ServiceNew() {
 
     const history = useHistory()
 
-    const [idPet, setIdPet] = useState(0)
-    const [idUser, setIdUser] = useState(0)
-    const [petName, setPetName] = useState("")
-    const [petAge, setPetAge] = useState("")
-    const [petBreed, setPetBreeed] = useState("")
-    const [petPet, setPetPet] = useState("")
+    const [idPet, setIdPet] = useState(0);
+    const [idUser, setIdUser] = useState(0);
+    const [petName, setPetName] = useState("");
+    const [petAge, setPetAge] = useState("");
+    const [petBreed, setPetBreeed] = useState("");
+    const [petPet, setPetPet] = useState("");
+
+    const [validated, setValidated] = useState(false);
+    const [errors, setErrors] = useState(false);
 
     const [date, setDate] = useState(new Date());
     const [time, setTime] = useState(new Date());
+
+    const [loading, setLoading] = useState(false);
 
     const [mutate] = useMutation(gql`
         mutation onePet($id: ID!) {  
@@ -54,6 +59,18 @@ function ServiceNew() {
                     id
                     email
                 }
+            }
+        }
+    `)
+
+
+    const [mutateServiceFind] = useMutation(gql`
+        mutation findOneService($data: FindOneServiceInput!) {
+            findOneService(data: $data) {
+                id
+                date
+                schedule
+                status
             }
         }
     `)
@@ -93,9 +110,14 @@ function ServiceNew() {
 
 
     useEffect(() => {
-        // Moment.locale('pt-BR');
         loadingPet()
-    }, [idPet])
+
+        if (validated) {
+            setErrors(false)
+        } else {
+            setErrors(true)
+        }
+    }, [idPet, validated])
 
     function goBack() {
         const removed = () => removeAsyncStorage()
@@ -124,7 +146,7 @@ function ServiceNew() {
                     status: "PENDENTE",
                     payment: "AGUARDANDO",
                     pet: {
-                        id: idPet
+                        id: petId
                     },
                     user: {
                         id: idUser
@@ -139,12 +161,40 @@ function ServiceNew() {
         }
     }
 
+
+    async function onNextPressFindService(date, schedule) {
+        setLoading(true)
+        const { data } = await mutateServiceFind({
+            variables: {
+                data: {
+                    date: date,
+                    schedule: schedule,
+                }
+            }
+        })
+
+        if (data.findOneService !== null) {
+            setLoading(false)
+            setValidated(false)
+            Alert.alert("Erro", "Ops... dia/horário não disponível.")
+        } else {
+            Alert.alert("Ok", "OK! Dia e horário disponível!")
+            setLoading(false)
+            setValidated(true)
+        }
+    }
+
+    function onBackFinish() {
+        setValidated(false)
+        setErrors(false)
+    }
+
     return (
         <>
             <Header />
             <View style={styles.container}>
                 <ProgressSteps>
-                    <ProgressStep label="Pet">
+                    <ProgressStep label="Pet" nextBtnText="Avançar">
                         <View style={{ alignItems: 'center' }}>
                             {petName === "" ?
                                 <Card style={styles.cardLoading}>
@@ -155,7 +205,7 @@ function ServiceNew() {
                                 <ScrollView>
                                     <Card style={styles.card}>
                                         <CardImage
-                                            source={{ uri: 'http://bit.ly/2GfzooV' }}
+                                            source={require('../../assets/images/background.jpg')}
                                             title={petName}
                                         />
                                         <CardTitle />
@@ -173,21 +223,33 @@ function ServiceNew() {
                             }
                         </View>
                     </ProgressStep>
-                    <ProgressStep label="Data/Horário">
-                        <View style={{ alignItems: 'center', flex: 1 }}>
-                            <View style={{ alignItems: 'center' }}>
-                                <Text style={styles.info}>Selecionar o dia:</Text>
-                                <Text style={{ color: 'white', marginBottom: 0 }}>Value: {date.toISOString()}</Text>
-                                <DatePicker title="Pick a date" value={date} onChange={setDate} />
+                    <ProgressStep label="Data/Horário" previousBtnStyle={styles.btnPreviousSubmit} nextBtnText="Avançar" errors={errors} onNext={() => {
+                        onNextPressFindService(
+                            Moment(date).format('DD/MM/YYYY'),
+                            Moment(time).format('h:mm'),
+                        )
+                    }}>
+                        {loading ?
+                            <Card style={styles.cardLoading}>
+                                <Text style={{ fontSize: 12, textAlign: "center" }} >Verificando disponibilidade de dia/horário...</Text>
+                                <ActivityIndicator size="small" color="#fff022" />
+                            </Card>
+                            :
+                            <View style={{ alignItems: 'center', flex: 1 }}>
+                                <View style={{ alignItems: 'center' }}>
+                                    <Text style={styles.info}>Selecionar o dia:</Text>
+                                    {/* <Text style={{ color: '#8e24aa', marginBottom: 0 }}>Value: {date.toLocaleDateString('pt-BR')}</Text> */}
+                                    <DatePicker title="Pick a date" value={date} onChange={setDate} />
+                                </View>
+                                <View style={{ alignItems: 'center' }}>
+                                    <Text style={styles.info}>Selecionar o horário:</Text>
+                                    {/* <Text style={{ color: '#8e24aa', marginBottom: 0 }}>Value: {time.toLocaleTimeString('pt-BR')}</Text> */}
+                                    <TimePicker title="Pick a time" value={time} onChange={setTime} />
+                                </View>
                             </View>
-                            <View style={{ alignItems: 'center' }}>
-                                <Text style={styles.info}>Selecionar o horário:</Text>
-                                <Text style={{ color: 'white', marginBottom: 0 }}>Value: {time.toISOString()}</Text>
-                                <TimePicker title="Pick a time" value={time} onChange={setTime} />
-                            </View>
-                        </View>
+                        }
                     </ProgressStep>
-                    <ProgressStep label="Serviço" onSubmit={() => {
+                    <ProgressStep label="Serviço" nextBtnText="Agendar Serviço" previousBtnStyle={styles.btnPreviousSubmit} onBack={() => {onBackFinish()}} onSubmit={() => {
                         onSubmitPress(
                             Moment(date).format('DD/MM/YYYY'),
                             Moment(time).format('h:mm'),
@@ -224,6 +286,9 @@ const styles = StyleSheet.create({
     },
     containerLoading: {
         flex: 1,
+    },
+    btnPreviousSubmit: {
+        display: "none",
     },
     buttonBack: {
         width: '100%',
