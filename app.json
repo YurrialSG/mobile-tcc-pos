@@ -13,14 +13,14 @@
     },
     "android": {
       "package": "com.yurrialsg.mobile_tcc_pos",
-      "versionCode": 3
+      "versionCode": 4
     },
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "splash": {
       "resizeMode": "contain",
