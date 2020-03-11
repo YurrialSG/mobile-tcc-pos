@@ -1,4 +1,4 @@
-A documentação do projeto se encontra em [Pata Marca API](https://gitlab.com/senac_pos-tcc_desenvolvimento-web-mobile-2019/projeto_tcc-7/pata-marca-api).
+A documentação do projeto se encontra em [Pata Marca API](https://gitlab.com/senac_pos-tcc_desenvolvimento-web-mobile-2019/projeto_tcc-7/pata-marca-api/-/wikis/home).
 
 ## Guia de utilização (uso online)
 
@@ -18,7 +18,7 @@ A documentação do projeto se encontra em [Pata Marca API](https://gitlab.com/s
 3. Instale as dependências via npm (na raiz do projeto)
    `npm install`
 
-4. Modificar o arquivo '*src/components/client.js*' de acordo com as suas necessidades:
+4. Modificar o arquivo '*src/components/graphql/client.js*' de acordo com as suas necessidades:
    
    
 *  Rodar o projeto com o emulador do android studio: Modificar *WebSocketLink* e *HttpLink* do arquivo para
@@ -34,7 +34,7 @@ A documentação do projeto se encontra em [Pata Marca API](https://gitlab.com/s
 >         })
 >      }))
 
-*  Rodar o projeto com app Expo instalado no seu smartphone: Modificar *WebSocketLink* e *HttpLink* do arquivo para
+*  Rodar o projeto com [app Expo](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=pt_BR) instalado no seu smartphone: Modificar *WebSocketLink* e *HttpLink* do arquivo para
 
 >   new WebSocketLink({
 >        uri: 'ws://192.168.0.13:4000/graphql',
