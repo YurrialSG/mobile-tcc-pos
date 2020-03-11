@@ -8,8 +8,8 @@ function LoginForm() {
 
     const history = useHistory()
 
-    const [email, setEmail] = useState("user1@gmail.com");
-    const [password, setPassword] = useState("123");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const [mutate] = useMutation(gql`
     mutation signin($email: String! $password: String!) {
